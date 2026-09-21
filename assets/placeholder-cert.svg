@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder artwork: certificate record panel with a verification seal">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2a45" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.45"/>
+
+  <rect x="150" y="130" width="900" height="470" rx="16" fill="none" stroke="#3a4f74" stroke-width="3.5"/>
+  <path d="M150 210H1050" stroke="#26385a" stroke-width="3"/>
+  <text x="190" y="184" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#fbbf24" letter-spacing="4">CERTIFICATE RECORD</text>
+  <text x="1010" y="184" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#64748b" letter-spacing="3">CERT-00</text>
+
+  <g fill="#94a3b8" opacity="0.85">
+    <rect x="190" y="270" width="330" height="18" rx="9"/>
+    <rect x="190" y="316" width="480" height="14" rx="7" opacity="0.6"/>
+    <rect x="190" y="352" width="420" height="14" rx="7" opacity="0.6"/>
+    <rect x="190" y="410" width="240" height="18" rx="9"/>
+    <rect x="190" y="456" width="380" height="14" rx="7" opacity="0.6"/>
+  </g>
+
+  <circle cx="880" cy="380" r="76" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="10 8"/>
+  <circle cx="880" cy="380" r="56" fill="#22c55e" opacity="0.12"/>
+  <path d="M852 382l20 22 40-46" fill="none" stroke="#4ade80" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="880" y="500" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" fill="#64748b" letter-spacing="3">VERIFIED</text>
+
+  <g fill="#fbbf24" opacity="0.65">
+    <rect x="190" y="536" width="8" height="44"/>
+    <rect x="206" y="536" width="4" height="44"/>
+    <rect x="220" y="536" width="10" height="44"/>
+    <rect x="240" y="536" width="4" height="44"/>
+    <rect x="254" y="536" width="6" height="44"/>
+    <rect x="270" y="536" width="4" height="44"/>
+    <rect x="284" y="536" width="12" height="44"/>
+    <rect x="306" y="536" width="4" height="44"/>
+    <rect x="320" y="536" width="8" height="44"/>
+    <rect x="338" y="536" width="4" height="44"/>
+    <rect x="352" y="536" width="6" height="44"/>
+    <rect x="368" y="536" width="10" height="44"/>
+  </g>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.5">
+    <path d="M60 120V60h60M1140 120V60h-60M60 680v60h60M1140 680v60h-60"/>
+  </g>
+
+  <text x="150" y="730" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#fbbf24" letter-spacing="4">CERTIFICATIONS</text>
+  <text x="150" y="766" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#64748b" letter-spacing="3">PLACEHOLDER · REPLACE WITH PROJECT ASSET</text>
+  <rect x="1.5" y="1.5" width="1197" height="797" fill="none" stroke="#26385a" stroke-width="3"/>
+</svg>

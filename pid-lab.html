@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PID Tuning Lab — Vipul Pawar</title>
+    <meta
+      name="description"
+      content="An interactive PID tuning simulator: adjust Kp, Ki and Kd against a first-order process with dead time and watch the response, overshoot and settling time change live in the browser."
+    />
+    <meta name="author" content="Vipul Pawar" />
+    <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04070d" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PID Tuning Lab — Vipul Pawar" />
+    <meta
+      property="og:description"
+      content="Tune Kp, Ki and Kd against a first-order process with dead time. Plain canvas, no libraries."
+    />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/output.css" />
+    <!-- Applies the saved (or system) theme before first paint — no flash. -->
+    <script>
+      (function () {
+        var isDark = false;
+        try {
+          var saved = window.localStorage.getItem('vp-theme');
+          isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body data-root="./" data-page="pid-lab.html">
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="section-tight pt-10">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a class="crumb" href="./index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-700 dark:text-slate-300" aria-current="page">PID Lab</span>
+        </nav>
+
+        <div class="section-head mt-6">
+          <div>
+            <p class="tag">TIC-101 // PID LAB</p>
+            <h1 class="mt-3 text-3xl sm:text-4xl">PID Tuning Lab</h1>
+          </div>
+          <p class="max-w-lg text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            A closed loop you can feel: one first-order process with dead time, three gains, and a live trend. Change a
+            gain and watch the same step response turn sluggish, oscillatory or well damped.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-tight pb-4" aria-labelledby="sim-heading">
+        <h2 id="sim-heading" class="sr-only">PID simulator</h2>
+
+        <div class="panel panel--glow overflow-hidden">
+          <div class="panel-head">
+            <span class="led led--green led--pulse" data-pid-led aria-hidden="true"></span>
+            <span class="tag">LOOP-101 // TIC-101</span>
+            <span class="tag-mini ml-auto">FOPDT · K = 1 · τ = 6 s · θ = 1.2 s</span>
+          </div>
+
+          <div class="panel-body grid gap-7 lg:grid-cols-[19rem_1fr] lg:gap-8">
+            <!-- ---------------- CONTROLS ---------------- -->
+            <div class="space-y-5">
+              <div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <label class="field-label mb-0" for="pid-kp">Kp — proportional gain</label>
+                  <output class="tag-mini" id="pid-kp-out" for="pid-kp">2.20</output>
+                </div>
+                <input class="slider mt-1" type="range" id="pid-kp" min="0" max="8" step="0.05" value="2.2" />
+              </div>
+
+              <div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <label class="field-label mb-0" for="pid-ki">Ki — integral gain</label>
+                  <output class="tag-mini" id="pid-ki-out" for="pid-ki">0.35</output>
+                </div>
+                <input class="slider mt-1" type="range" id="pid-ki" min="0" max="4" step="0.02" value="0.35" />
+              </div>
+
+              <div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <label class="field-label mb-0" for="pid-kd">Kd — derivative gain</label>
+                  <output class="tag-mini" id="pid-kd-out" for="pid-kd">0.25</output>
+                </div>
+                <input class="slider mt-1" type="range" id="pid-kd" min="0" max="2" step="0.05" value="0.25" />
+              </div>
+
+              <div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <label class="field-label mb-0" for="pid-sp">Setpoint step (%)</label>
+                  <output class="tag-mini" id="pid-sp-out" for="pid-sp">50</output>
+                </div>
+                <input class="slider mt-1" type="range" id="pid-sp" min="10" max="90" step="5" value="50" />
+              </div>
+
+              <div class="flex flex-wrap gap-2">
+                <button type="button" class="btn btn--primary btn--sm" data-pid-action="run">Pause loop</button>
+                <button type="button" class="btn btn--outline btn--sm" data-pid-action="step">Apply step</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-pid-action="reset">Reset</button>
+              </div>
+
+              <div>
+                <p class="field-label">Presets</p>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" class="filter-btn" data-pid-preset="p" aria-pressed="false">P only</button>
+                  <button type="button" class="filter-btn" data-pid-preset="pi" aria-pressed="false">PI</button>
+                  <button type="button" class="filter-btn" data-pid-preset="pid" aria-pressed="true">PID</button>
+                  <button type="button" class="filter-btn" data-pid-preset="hard" aria-pressed="false">
+                    Over-tuned
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <p class="field-label">Chart window</p>
+                <div class="flex flex-wrap gap-2" role="group" aria-label="Chart time window">
+                  <button type="button" class="filter-btn" data-pid-window="20" aria-pressed="false">20 s</button>
+                  <button type="button" class="filter-btn" data-pid-window="40" aria-pressed="true">40 s</button>
+                  <button type="button" class="filter-btn" data-pid-window="80" aria-pressed="false">80 s</button>
+                </div>
+              </div>
+
+              <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-500">
+                Gains apply to the running loop immediately. The setpoint slider only takes effect when you press
+                <span class="font-mono">Apply step</span>, because the metrics are measured from the moment of the step.
+              </p>
+            </div>
+
+            <!-- ---------------- CHART + METRICS ---------------- -->
+            <div>
+              <ul class="mb-3 flex flex-wrap gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500 dark:text-slate-500">
+                <li class="inline-flex items-center gap-2">
+                  <span class="inline-block h-0.5 w-5 bg-signal-600 dark:bg-signal-400" aria-hidden="true"></span>SP
+                </li>
+                <li class="inline-flex items-center gap-2">
+                  <span class="inline-block h-0.5 w-5 bg-go-700 dark:bg-go-400" aria-hidden="true"></span>PV
+                </li>
+                <li class="inline-flex items-center gap-2">
+                  <span class="inline-block h-0.5 w-5 bg-slate-400 dark:bg-slate-500" aria-hidden="true"></span>Output
+                </li>
+              </ul>
+
+              <div class="overflow-hidden rounded-xl border border-paper-300 bg-white dark:border-ink-700 dark:bg-ink-850">
+                <canvas
+                  id="pid-chart"
+                  class="block h-[260px] w-full sm:h-[340px]"
+                  role="img"
+                  aria-label="Live chart of setpoint, process variable and controller output against time"
+                ></canvas>
+              </div>
+
+              <p
+                class="sr-only"
+                aria-live="polite"
+                id="pid-announce"
+              ></p>
+              <noscript>
+                <p class="todo mt-4">
+                  <span aria-hidden="true">▸</span>
+                  <span>The simulator needs JavaScript. Without it you can still read how the loop is modelled below.</span>
+                </p>
+              </noscript>
+
+              <dl class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <div class="metric">
+                  <dt class="metric-label">Overshoot</dt>
+                  <dd class="metric-value" data-pid-metric="overshoot">—</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric-label">Settling time (±2%)</dt>
+                  <dd class="metric-value" data-pid-metric="settling">—</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric-label">Rise time (10–90%)</dt>
+                  <dd class="metric-value" data-pid-metric="rise">—</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric-label">Steady-state error</dt>
+                  <dd class="metric-value" data-pid-metric="error">—</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric-label">PV</dt>
+                  <dd class="metric-value" data-pid-metric="pv">—</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric-label">Output</dt>
+                  <dd class="metric-value" data-pid-metric="output">—</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= EXPLANATION ================= -->
+      <section class="section-tight" aria-labelledby="how-heading">
+        <p class="tag">DOC-01 // HOW THE LOOP IS MODELLED</p>
+        <h2 id="how-heading" class="mt-3 text-xl sm:text-2xl">How it works</h2>
+        <div class="mt-5 grid gap-5 lg:grid-cols-2">
+          <div class="panel">
+            <div class="panel-head"><span class="tag">CONTROLLER</span></div>
+            <div class="panel-body space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>
+                The controller is the parallel (independent) form:
+                <span class="font-mono text-slate-800 dark:text-slate-200">u = Kp·e + Ki·∫e dt + Kd·de/dt</span>.
+              </p>
+              <p>
+                The derivative term acts on the measurement rather than the error, so a setpoint step does not produce a
+                derivative spike. The output is clamped to 0–100%, and integration is frozen while the output is
+                saturated — that is what stops the integral term from winding up.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><span class="tag">PROCESS</span></div>
+            <div class="panel-body space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>
+                The plant is a first-order plus dead time (FOPDT) model: a time constant of 6 seconds, a steady-state
+                gain of 1, and 1.2 seconds of transport delay between the controller output and its effect on the
+                measurement.
+              </p>
+              <p>
+                Dead time is the reason tuning is not trivial: the controller keeps acting on stale information, which is
+                exactly what makes aggressive gains oscillate on real loops too.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="panel">
+            <div class="panel-body">
+              <p class="tag">OVERSHOOT</p>
+              <p class="mt-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+                How far the process variable travels past the setpoint, as a percentage of the step.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <p class="tag">SETTLING TIME</p>
+              <p class="mt-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+                The last moment the response was outside a ±2% band around the setpoint — after that it stays inside.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <p class="tag">RISE TIME</p>
+              <p class="mt-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+                Time taken to travel from 10% to 90% of the setpoint — a measure of how quick the loop is.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <p class="tag">STEADY-STATE ERROR</p>
+              <p class="mt-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+                The remaining offset at the end of the run. Proportional-only control always leaves some.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel reveal mt-5">
+          <div class="panel-head"><span class="tag">DOC-02 // THINGS TO TRY</span></div>
+          <div class="panel-body">
+            <ul class="space-y-3">
+              <li class="bullet-item">
+                <span><span class="font-mono text-slate-800 dark:text-slate-200">P only</span> — the response is fast but settles below the setpoint and stays there.</span>
+              </li>
+              <li class="bullet-item">
+                <span><span class="font-mono text-slate-800 dark:text-slate-200">Add I</span> — the offset disappears, and with enough Ki the loop starts to oscillate because of the dead time.</span>
+              </li>
+              <li class="bullet-item">
+                <span><span class="font-mono text-slate-800 dark:text-slate-200">Add D</span> — a little derivative damps the oscillation and cuts the overshoot.</span>
+              </li>
+              <li class="bullet-item">
+                <span><span class="font-mono text-slate-800 dark:text-slate-200">Over-tuned</span> — too much of all three: watch the output saturate at 100% and the response ring.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="./js/layout.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/pid.js" defer></script>
+  </body>
+</html>

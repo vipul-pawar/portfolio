@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects — Vipul Pawar</title>
+    <meta
+      name="description"
+      content="Five documented projects by Vipul Pawar: ESP32 voter authentication, PLC control of pneumatic cylinders, sonicRadar, the PicTale Django gallery and an EMI calculator."
+    />
+    <meta name="author" content="Vipul Pawar" />
+    <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04070d" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projects — Vipul Pawar" />
+    <meta
+      property="og:description"
+      content="PLC, embedded/IoT, security and web projects — each with a datasheet, build notes and stack."
+    />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/output.css" />
+    <!-- Applies the saved (or system) theme before first paint — no flash. -->
+    <script>
+      (function () {
+        var isDark = false;
+        try {
+          var saved = window.localStorage.getItem('vp-theme');
+          isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body data-root="./" data-page="projects.html">
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="section-tight pt-10">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a class="crumb" href="./index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-700 dark:text-slate-300" aria-current="page">Projects</span>
+        </nav>
+
+        <div class="section-head mt-6">
+          <div>
+            <p class="tag">PRJ-000 // PROJECT INDEX</p>
+            <h1 class="mt-3 text-3xl sm:text-4xl">Projects</h1>
+          </div>
+          <p class="max-w-lg text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            Five builds from GCOEA coursework and personal work — sequential PLC control, embedded and IoT systems,
+            security-focused authentication and Django web apps. Filter by the tag that interests you.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Filter projects by tag">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="plc" aria-pressed="false">PLC</button>
+          <button type="button" class="filter-btn" data-filter="embedded" aria-pressed="false">
+            Embedded / IoT
+          </button>
+          <button type="button" class="filter-btn" data-filter="security" aria-pressed="false">Security</button>
+          <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+        </div>
+        <p class="tag-mini mt-3" id="project-count" role="status" aria-live="polite">5 of 5 projects shown</p>
+      </section>
+
+      <section class="section-tight pb-16" aria-label="Project list">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="project-grid">
+          <a
+            class="card card--link reveal"
+            href="./projects/voter-authentication.html"
+            data-tags="embedded security"
+          >
+            <span class="card-media">
+              <img src="./assets/Voter.jpg" alt="" width="1200" height="800" loading="lazy" />
+              <span class="chip chip--amber absolute left-3 top-3">VOT-101</span>
+            </span>
+            <span class="card-body">
+              <span class="flex flex-wrap gap-1.5">
+                <span class="chip">Embedded / IoT</span>
+                <span class="chip">Security</span>
+              </span>
+              <span class="mt-3 block text-lg font-semibold leading-snug text-slate-900 dark:text-white">
+                Voter Authentication System
+              </span>
+              <span class="mt-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Feb–May 2026 · GCOEA
+              </span>
+              <span class="mt-3 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                Multi-factor verification that pairs a QR code from the voter list with fingerprint matching on an
+                ESP32, with a cloud audit log of every attempt.
+              </span>
+              <span class="card-cta">View details <span class="cta-arrow" aria-hidden="true">→</span></span>
+            </span>
+          </a>
+
+          <a
+            class="card card--link reveal"
+            href="./projects/plc-pneumatic-control.html"
+            data-tags="plc"
+          >
+            <span class="card-media">
+              <img src="./assets/PLC.jpg" alt="" width="1200" height="800" loading="lazy" />
+              <span class="chip chip--amber absolute left-3 top-3">PNE-102</span>
+            </span>
+            <span class="card-body">
+              <span class="flex flex-wrap gap-1.5">
+                <span class="chip">PLC</span>
+              </span>
+              <span class="mt-3 block text-lg font-semibold leading-snug text-slate-900 dark:text-white">
+                PLC-Based Control of Single &amp; Double-Acting Pneumatic Cylinders
+              </span>
+              <span class="mt-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Apr 2026 · GCOEA
+              </span>
+              <span class="mt-3 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                Sequential control where the second piston only starts after the first finishes its cycle, using a 5 s
+                off-delay timer and negative edge detection.
+              </span>
+              <span class="card-cta">View details <span class="cta-arrow" aria-hidden="true">→</span></span>
+            </span>
+          </a>
+
+          <a class="card card--link reveal" href="./projects/sonicradar.html" data-tags="embedded">
+            <span class="card-media">
+              <img src="./assets/Sonic Radar.jpg" alt="" width="1200" height="800" loading="lazy" />
+              <span class="chip chip--amber absolute left-3 top-3">SNR-103</span>
+            </span>
+            <span class="card-body">
+              <span class="flex flex-wrap gap-1.5">
+                <span class="chip">Embedded / IoT</span>
+              </span>
+              <span class="mt-3 block text-lg font-semibold leading-snug text-slate-900 dark:text-white">sonicRadar</span>
+              <span class="mt-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Apr 2025 · GCOEA
+              </span>
+              <span class="mt-3 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                A submarine-sonar-style radar: an HC-SR04 on a servo sweeps 180°, a buzzer warns about nearby objects
+                and the sweep is drawn live in Processing IDE.
+              </span>
+              <span class="card-cta">View details <span class="cta-arrow" aria-hidden="true">→</span></span>
+            </span>
+          </a>
+
+          <a class="card card--link reveal" href="./projects/pictale.html" data-tags="web">
+            <span class="card-media">
+              <img src="./assets/Pictale.jpg" alt="" width="1200" height="800" loading="lazy" />
+              <span class="chip chip--amber absolute left-3 top-3">WEB-104</span>
+            </span>
+            <span class="card-body">
+              <span class="flex flex-wrap gap-1.5">
+                <span class="chip">Web</span>
+              </span>
+              <span class="mt-3 block text-lg font-semibold leading-snug text-slate-900 dark:text-white">PicTale</span>
+              <span class="mt-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Jun 2025
+              </span>
+              <span class="mt-3 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                Django gallery with full CRUD for photos and videos, user authentication, an admin dashboard and a
+                responsive dark-mode interface.
+              </span>
+              <span class="card-cta">View details <span class="cta-arrow" aria-hidden="true">→</span></span>
+            </span>
+          </a>
+
+          <a class="card card--link reveal" href="./projects/emi-calculator.html" data-tags="web">
+            <span class="card-media">
+              <img src="./assets/EMI.jpg" alt="" width="1200" height="800" loading="lazy" />
+              <span class="chip chip--amber absolute left-3 top-3">FIN-105</span>
+            </span>
+            <span class="card-body">
+              <span class="flex flex-wrap gap-1.5">
+                <span class="chip">Web</span>
+              </span>
+              <span class="mt-3 block text-lg font-semibold leading-snug text-slate-900 dark:text-white">
+                EMI Calculator
+              </span>
+              <span class="mt-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Jan 2025
+              </span>
+              <span class="mt-3 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                Django app that computes loan EMI from principal, interest rate and tenure with a clean Tailwind and
+                Bootstrap interface.
+              </span>
+              <span class="card-cta">View details <span class="cta-arrow" aria-hidden="true">→</span></span>
+            </span>
+          </a>
+        </div>
+
+        <p class="panel panel-body mt-6 hidden text-sm text-slate-600 dark:text-slate-400" id="no-results">
+          No projects match that tag yet. Try another filter, or
+          <a class="underline decoration-dotted" href="./contact.html">tell me what you would like to see</a>.
+        </p>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="./js/layout.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+    <script>
+      // Tag filter for the project grid (buttons are real buttons, state via aria-pressed).
+      (function () {
+        var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+        var cards = Array.prototype.slice.call(document.querySelectorAll('#project-grid [data-tags]'));
+        var count = document.getElementById('project-count');
+        var empty = document.getElementById('no-results');
+
+        function applyFilter(filter) {
+          var shown = 0;
+          cards.forEach(function (card) {
+            var tags = (card.getAttribute('data-tags') || '').split(/\s+/);
+            var match = filter === 'all' || tags.indexOf(filter) !== -1;
+            card.classList.toggle('hidden', !match);
+            if (match) {
+              shown++;
+            }
+          });
+
+          buttons.forEach(function (button) {
+            button.setAttribute('aria-pressed', button.getAttribute('data-filter') === filter ? 'true' : 'false');
+          });
+
+          if (count) {
+            count.textContent = shown + ' of ' + cards.length + ' projects shown';
+          }
+          if (empty) {
+            empty.classList.toggle('hidden', shown !== 0);
+          }
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            applyFilter(button.getAttribute('data-filter'));
+          });
+        });
+
+        var initial = (window.location.hash || '').replace('#', '');
+        if (
+          initial &&
+          buttons.some(function (button) {
+            return button.getAttribute('data-filter') === initial;
+          })
+        ) {
+          applyFilter(initial);
+        }
+      })();
+    </script>
+  </body>
+</html>

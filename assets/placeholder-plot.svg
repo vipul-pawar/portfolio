@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder artwork: trend chart with a process variable responding to a setpoint step">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2a45" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.45"/>
+
+  <rect x="140" y="140" width="960" height="500" fill="none" stroke="#26385a" stroke-width="3"/>
+  <g stroke="#1b2a45" stroke-width="2">
+    <path d="M140 240H1100M140 340H1100M140 440H1100M140 540H1100"/>
+    <path d="M340 140V640M540 140V640M740 140V640M940 140V640"/>
+  </g>
+
+  <path d="M140 300H1100" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12 10" opacity="0.9"/>
+
+  <path d="M140 610C260 610 300 320 430 292C480 282 520 314 600 308C700 300 780 306 900 304C980 303 1040 305 1090 305"
+    fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round"/>
+
+  <g fill="#4ade80">
+    <circle cx="1090" cy="305" r="8"/>
+  </g>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#94a3b8">
+    <text x="60" y="306">SP</text>
+    <text x="60" y="616">PV</text>
+    <text x="1100" y="700">TIME →</text>
+  </g>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.5">
+    <path d="M60 120V60h60M1140 120V60h-60M60 680v60h60M1140 680v60h-60"/>
+  </g>
+
+  <text x="140" y="730" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#fbbf24" letter-spacing="4">RESPONSE / TREND</text>
+  <text x="140" y="766" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#64748b" letter-spacing="3">PLACEHOLDER · REPLACE WITH PROJECT ASSET</text>
+  <rect x="1.5" y="1.5" width="1197" height="797" fill="none" stroke="#26385a" stroke-width="3"/>
+</svg>

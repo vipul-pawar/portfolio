@@ -1,0 +1,15 @@
+# Build tooling
+node_modules/
+.tools/
+npm-debug.log*
+yarn-error.log*
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+desktop.ini
+
+# Note: css/output.css IS committed on purpose so the site works on any
+# static host (GitHub Pages / Netlify) and when opened straight from disk.

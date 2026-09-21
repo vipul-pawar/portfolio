@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 — Loop not found — Vipul Pawar</title>
+    <meta
+      name="description"
+      content="The page you asked for is not on the wired range. Head back to the portfolio home page or jump straight to projects, experience, skills, certifications or the PID lab."
+    />
+    <meta name="author" content="Vipul Pawar" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04070d" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link id="site-css" rel="stylesheet" href="./css/output.css" />
+    <!-- Applies the saved (or system) theme before first paint — no flash. -->
+    <script>
+      (function () {
+        var isDark = false;
+        try {
+          var saved = window.localStorage.getItem('vp-theme');
+          isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+    <script>
+      /* This page is handed back by the host for ANY missing address, so it can
+         be requested from a nested path where relative files do not resolve.
+         If the stylesheet cannot be found, retry it from the site root. */
+      (function () {
+        var link = document.getElementById('site-css');
+        if (!link) {
+          return;
+        }
+        link.addEventListener('error', function () {
+          window.vpRootFallback = true;
+          var base = document.createElement('base');
+          base.href = '/';
+          document.head.appendChild(base);
+          var clone = link.cloneNode(false);
+          clone.href = '/css/output.css';
+          if (link.parentNode) {
+            link.parentNode.replaceChild(clone, link);
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body data-root="./" data-page="404.html">
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="relative overflow-hidden border-b border-paper-300 dark:border-ink-700">
+        <div class="grid-bg" aria-hidden="true"></div>
+        <div
+          class="relative mx-auto w-full max-w-content px-4 pb-14 pt-10 sm:px-6 sm:pb-20 sm:pt-14 lg:px-8"
+        >
+          <nav class="crumbs" aria-label="Breadcrumb">
+            <a class="crumb" href="./index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <span class="text-slate-700 dark:text-slate-300" aria-current="page">Not found</span>
+          </nav>
+
+          <div class="mt-8 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div class="reveal">
+              <p class="tag">SIG-404 // NO SIGNAL</p>
+              <p
+                class="mt-4 font-mono text-6xl font-bold leading-none tracking-tight text-slate-900 sm:text-7xl dark:text-white"
+              >
+                404
+              </p>
+              <h1 class="mt-4 text-3xl sm:text-4xl">Loop not found</h1>
+              <p class="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+                The measurement has flatlined: the address you asked for is not on the wired range. It may have been
+                renamed, moved, or it may never have existed.
+              </p>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a class="btn btn--primary" href="./index.html"
+                  >Back to home<span class="cta-arrow" aria-hidden="true">→</span></a
+                >
+                <a class="btn btn--outline" href="./projects.html">Browse projects</a>
+                <a class="btn btn--ghost" href="./contact.html">Contact</a>
+              </div>
+
+              <p class="mt-6 inline-flex items-center gap-2 rounded-lg border border-paper-300 bg-white/70 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:border-ink-700 dark:bg-ink-900/60 dark:text-slate-400">
+                <span class="led led--amber led--pulse" aria-hidden="true"></span>
+                <span>loop open — no controller response</span>
+              </p>
+            </div>
+
+            <!-- ---------------- DIAGNOSTICS ---------------- -->
+            <div class="reveal">
+              <div class="panel panel--glow">
+                <div class="panel-head">
+                  <span class="led led--amber" aria-hidden="true"></span>
+                  <span class="tag">DIAG-01 // REQUEST DIAGNOSTICS</span>
+                  <span class="tag-mini ml-auto">FAULT</span>
+                </div>
+                <div class="panel-body">
+                  <svg
+                    class="trend-line h-16 w-full text-signal-500 dark:text-signal-400"
+                    viewBox="0 0 400 64"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 24H62V46H400" stroke="currentColor" stroke-width="2" />
+                    <path
+                      d="M232 46h8M248 46h8M264 46h8"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="opacity-40"
+                    />
+                  </svg>
+
+                  <dl class="mt-4">
+                    <div class="ds-row">
+                      <dt class="ds-key">Requested</dt>
+                      <dd class="ds-val break-all font-mono" data-404-path>/</dd>
+                    </div>
+                    <div class="ds-row">
+                      <dt class="ds-key">Status</dt>
+                      <dd class="ds-val font-mono">404 — no matching file</dd>
+                    </div>
+                    <div class="ds-row">
+                      <dt class="ds-key">Cause</dt>
+                      <dd class="ds-val font-mono">typo, stale link, or moved page</dd>
+                    </div>
+                    <div class="ds-row">
+                      <dt class="ds-key">Action</dt>
+                      <dd class="ds-val">Pick a destination below</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= EVERY SECTION ================= -->
+      <section class="section-tight" aria-labelledby="where-heading">
+        <div class="section-head">
+          <div>
+            <p class="tag">NAV-01 // EVERY SECTION</p>
+            <h2 id="where-heading" class="mt-3 text-xl sm:text-2xl">Where you probably wanted to go</h2>
+          </div>
+          <p class="max-w-lg text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            All seven sections, one link each.
+          </p>
+        </div>
+
+        <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <li>
+            <a class="panel--row group" href="./projects.html">
+              <span class="min-w-0 flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500"
+                  >PRJ-000</span
+                >
+                <span class="mt-1 block text-[15px] font-medium text-slate-800 dark:text-slate-100">Projects</span>
+              </span>
+              <span class="cta-arrow self-center" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="panel--row group" href="./experience/reliance-internship.html">
+              <span class="min-w-0 flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500"
+                  >EXP-001</span
+                >
+                <span class="mt-1 block text-[15px] font-medium text-slate-800 dark:text-slate-100">Experience</span>
+              </span>
+              <span class="cta-arrow self-center" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="panel--row group" href="./skills.html">
+              <span class="min-w-0 flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500"
+                  >SKL-000</span
+                >
+                <span class="mt-1 block text-[15px] font-medium text-slate-800 dark:text-slate-100">Skills</span>
+              </span>
+              <span class="cta-arrow self-center" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="panel--row group" href="./certifications.html">
+              <span class="min-w-0 flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500"
+                  >CRT-000</span
+                >
+                <span class="mt-1 block text-[15px] font-medium text-slate-800 dark:text-slate-100">Certifications</span>
+              </span>
+              <span class="cta-arrow self-center" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="panel--row group" href="./pid-lab.html">
+              <span class="min-w-0 flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500"
+                  >TIC-101</span
+                >
+                <span class="mt-1 block text-[15px] font-medium text-slate-800 dark:text-slate-100">PID Lab</span>
+              </span>
+              <span class="cta-arrow self-center" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="panel--row group" href="./contact.html">
+              <span class="min-w-0 flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500"
+                  >COM-101</span
+                >
+                <span class="mt-1 block text-[15px] font-medium text-slate-800 dark:text-slate-100">Contact</span>
+              </span>
+              <span class="cta-arrow self-center" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="./js/layout.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+    <script>
+      /* Shows the address that was actually requested, and repairs the shared
+         layout if this page was served from a nested URL. Runs after the
+         deferred scripts have had their chance. */
+      (function () {
+        function showPath() {
+          var target = document.querySelector('[data-404-path]');
+          if (!target) {
+            return;
+          }
+          var path = window.location.pathname + window.location.search + window.location.hash;
+          target.textContent = path || '/';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          showPath();
+
+          var header = document.getElementById('site-header');
+          if (!header || header.children.length) {
+            return; // layout.js loaded fine — nothing to repair
+          }
+          document.body.setAttribute('data-root', '/');
+          if (!window.vpRootFallback) {
+            var base = document.createElement('base');
+            base.href = '/';
+            document.head.appendChild(base);
+          }
+          var files = ['js/layout.js', 'js/theme.js'];
+          for (var i = 0; i < files.length; i++) {
+            var script = document.createElement('script');
+            script.src = files[i];
+            script.defer = true;
+            var anchor = document.getElementById('site-footer');
+            if (anchor && anchor.parentNode) {
+              anchor.parentNode.insertBefore(script, anchor.nextSibling);
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

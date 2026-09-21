@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>sonicRadar — Vipul Pawar</title>
+    <meta
+      name="description"
+      content="Project detail: sonicRadar, an Arduino Uno and HC-SR04 ultrasonic scanner that sweeps 180 degrees on a servo, warns about nearby objects and plots the sweep live in Processing IDE."
+    />
+    <meta name="author" content="Vipul Pawar" />
+    <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04070d" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="sonicRadar — Vipul Pawar" />
+    <meta
+      property="og:description"
+      content="A submarine-sonar-style radar built from an ultrasonic sensor, a servo and an Arduino Uno."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/output.css" />
+    <!-- Applies the saved (or system) theme before first paint — no flash. -->
+    <script>
+      (function () {
+        var isDark = false;
+        try {
+          var saved = window.localStorage.getItem('vp-theme');
+          isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body data-root="../" data-page="projects/sonicradar.html">
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============ 1. HEADER + DATASHEET ============ -->
+      <section class="section-tight pt-10" aria-labelledby="project-heading">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a class="crumb" href="../index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <a class="crumb" href="../projects.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-700 dark:text-slate-300" aria-current="page">sonicRadar</span>
+        </nav>
+        <p class="mt-4">
+          <a class="crumb font-mono text-[11px] uppercase tracking-[0.14em]" href="../projects.html"
+            ><span aria-hidden="true">←</span> Back to all projects</a
+          >
+        </p>
+
+        <div class="mt-8 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+          <div class="reveal">
+            <p class="tag">PRJ-103 // PROJECT</p>
+            <h1 id="project-heading" class="mt-3 text-3xl leading-tight sm:text-4xl">sonicRadar</h1>
+            <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+              A submarine-sonar-style radar: one ultrasonic sensor sweeps 180° on a servo, warns about nearby objects
+              with a buzzer, and draws what it sees in real time.
+            </p>
+
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--amber">Arduino Uno</li>
+              <li class="chip chip--amber">Embedded C++</li>
+              <li class="chip chip--amber">Sensors &amp; transducers</li>
+              <li class="chip chip--green">Processing IDE</li>
+            </ul>
+
+            <div class="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Timeline <span class="ml-2 text-slate-700 dark:text-slate-300">Apr 2025</span>
+              </p>
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Context <span class="ml-2 text-slate-700 dark:text-slate-300">GCOEA, Amravati — academic project</span>
+              </p>
+            </div>
+          </div>
+
+          <aside class="panel panel--glow reveal" aria-labelledby="datasheet-heading">
+            <div class="panel-head">
+              <span class="tag" id="datasheet-heading">DS-103 // DATASHEET</span>
+              <span class="tag-mini ml-auto">REV A</span>
+            </div>
+            <dl class="panel-body">
+              <div class="ds-row">
+                <dt class="ds-key">Tag</dt>
+                <dd class="ds-val">SNR-103</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Service</dt>
+                <dd class="ds-val">180° ultrasonic scanning with proximity alert</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Hardware / Stack</dt>
+                <dd class="ds-val">Arduino Uno · Embedded C++ · HC-SR04 · servo · buzzer · Processing IDE</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Outcome</dt>
+                <dd class="ds-val">Live sonar-style visualisation of detected objects, with an audible warning for near objects.</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ 2. OVERVIEW ============ -->
+      <section class="section-tight" aria-labelledby="overview-heading">
+        <p class="tag">SEC-01 // OVERVIEW</p>
+        <h2 id="overview-heading" class="mt-3 text-xl sm:text-2xl">Overview</h2>
+        <div class="panel mt-5">
+          <div class="panel-body space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+            <p>
+              sonicRadar is an ultrasonic scanning rig that behaves like a simplified sonar set. An HC-SR04 sensor is
+              mounted on a servo and swept through 180°, taking a distance reading at each step.
+            </p>
+            <p>
+              The readings are streamed to a computer where a Processing IDE sketch draws the sweep as a radar display,
+              so obstacles appear as blips at their measured range and angle. A buzzer connected to the board gives an
+              immediate audible warning when something is close.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. PROBLEM & SOLUTION ============ -->
+      <section class="section-tight" aria-labelledby="problem-heading">
+        <p class="tag">SEC-02 // PROBLEM &amp; SOLUTION</p>
+        <h2 id="problem-heading" class="mt-3 text-xl sm:text-2xl">Problem and solution</h2>
+        <div class="mt-5 grid gap-5 md:grid-cols-2">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="led led--amber" aria-hidden="true"></span>
+              <span class="tag">ISSUE</span>
+            </div>
+            <div class="panel-body">
+              <ul class="space-y-3">
+                <li class="bullet-item">
+                  <span>A single fixed sensor only knows what is directly in front of it — no sense of direction.</span>
+                </li>
+                <li class="bullet-item">
+                  <span>Raw distance numbers scrolling past are hard to interpret, especially while an object is moving.</span>
+                </li>
+                <li class="bullet-item">
+                  <span>An obstacle close to the rig needs warning immediately, not after someone reads a log.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="led led--green" aria-hidden="true"></span>
+              <span class="tag">APPROACH</span>
+            </div>
+            <div class="panel-body space-y-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>
+                Turn the problem into a scan: sweep the sensor across 180°, pair every distance reading with the angle
+                it came from, and send the pairs out over serial.
+              </p>
+              <p>
+                Visualise those pairs as a radar sweep in Processing IDE, and add a buzzer that fires as soon as a
+                reading drops below the near-object threshold.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. HOW IT WORKS ============ -->
+      <section class="section-tight" aria-labelledby="how-heading">
+        <p class="tag">SEC-03 // HOW IT WORKS</p>
+        <h2 id="how-heading" class="mt-3 text-xl sm:text-2xl">How it works</h2>
+        <ol class="mt-6">
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">01</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Sweep.</strong>
+              The servo steps the HC-SR04 through 180°, pausing briefly at each angle so the sensor can settle.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">02</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Measure.</strong>
+              At every step the sensor sends an ultrasonic pulse and times the echo to work out the distance to the
+              nearest object.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">03</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Alert.</strong>
+              If a reading falls inside the near-object range, the buzzer sounds so the warning does not depend on
+              watching the screen.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">04</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Stream.</strong>
+              Angle and distance are sent over the serial link as a pair, which is what makes the picture meaningful
+              rather than just a number.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">05</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Visualise.</strong>
+              The Processing IDE sketch plots each pair as a blip and animates the sweep, producing the radar-style
+              display.</span
+            >
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ 5. KEY FEATURES ============ -->
+      <section class="section-tight" aria-labelledby="features-heading">
+        <p class="tag">SEC-04 // KEY FEATURES</p>
+        <h2 id="features-heading" class="mt-3 text-xl sm:text-2xl">Key features</h2>
+        <ul class="mt-5 space-y-3">
+          <li class="bullet-item"><span>180° scanning sweep driven by a single servo-mounted ultrasonic sensor.</span></li>
+          <li class="bullet-item"><span>Audible proximity warning from a buzzer for objects inside the near range.</span></li>
+          <li class="bullet-item"><span>Live radar-style visualisation in Processing IDE rather than a serial-only output.</span></li>
+          <li class="bullet-item"><span>Angle/distance pairing so each blip is placed at the correct bearing.</span></li>
+          <li class="bullet-item"><span>Low-cost hardware: one Arduino Uno, one HC-SR04, one servo, one buzzer.</span></li>
+        </ul>
+      </section>
+
+      <!-- ============ 6. STACK ============ -->
+      <section class="section-tight" aria-labelledby="stack-heading">
+        <p class="tag">SEC-05 // HARDWARE &amp; SOFTWARE STACK</p>
+        <h2 id="stack-heading" class="mt-3 text-xl sm:text-2xl">Hardware / software stack</h2>
+        <ul class="mt-5 flex flex-wrap gap-2">
+          <li class="chip">Arduino Uno</li>
+          <li class="chip">Embedded C++</li>
+          <li class="chip">HC-SR04 ultrasonic sensor</li>
+          <li class="chip">Servo motor</li>
+          <li class="chip">Buzzer</li>
+          <li class="chip">Sensors &amp; transducers</li>
+          <li class="chip">Processing IDE</li>
+          <li class="chip">Serial communication</li>
+        </ul>
+      </section>
+
+      <!-- ============ 7. GALLERY ============ -->
+      <section class="section-tight" aria-labelledby="gallery-heading">
+        <p class="tag">SEC-06 // GALLERY</p>
+        <h2 id="gallery-heading" class="mt-3 text-xl sm:text-2xl">Gallery</h2>
+        <p class="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-400">Click any panel to enlarge it.</p>
+        <div class="mt-5 grid gap-5 sm:grid-cols-2">
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/sonic-radar/Circuit Diagram.jpg"
+              data-caption="IMG-01 — Circuit diagram (placeholder)"
+            >
+              <img
+                src="projectsImages/sonic-radar/Circuit Diagram.jpg"
+                alt="Placeholder: circuit diagram of the Arduino, ultrasonic sensor and servo"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-01</span> Circuit Diagram</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/sonic-radar/Full system.jpg"
+              data-caption="IMG-02 — Final working model (placeholder)"
+            >
+              <img
+                src="projectsImages/sonic-radar/Full system.jpg"
+                alt="Placeholder: final working model with the sensor mounted on the servo"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-02</span> Final Working Model</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/sonic-radar/Radar Visualization.jpg"
+              data-caption="IMG-03 — Processing IDE radar display (placeholder)"
+            >
+              <img
+                src="projectsImages/sonic-radar/Radar Visualization.jpg"
+                alt="Placeholder: radar visualisation window from the Processing IDE sketch"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-03</span> Radar Display — Processing IDE</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/sonic-radar/Object.jpg"
+              data-caption="IMG-04 — Block diagram (placeholder)"
+            >
+              <img
+                src="projectsImages/sonic-radar/Object.jpg"
+                alt="Placeholder: block diagram from sensor to serial link to visualisation"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-04</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 8. LEARNINGS ============ -->
+      <section class="section-tight" aria-labelledby="learned-heading">
+        <p class="tag">SEC-07 // WHAT I LEARNED</p>
+        <h2 id="learned-heading" class="mt-3 text-xl sm:text-2xl">What I learned</h2>
+        <ul class="mt-5 space-y-3">
+          <li class="bullet-item">
+            <span>Sensor fusion at the smallest scale — pairing an angle with a distance is what turns two readings into one meaningful measurement.</span>
+          </li>
+          <li class="bullet-item">
+            <span>Serial bandwidth sets the scan rate: the more data sent per step, the slower the sweep becomes.</span>
+          </li>
+          <li class="bullet-item">
+            <span>Visualising sensor data in a separate tool made faults obvious immediately, which numbers on a serial monitor never did.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ 9. LINKS ============ -->
+      <section class="section-tight" aria-labelledby="links-heading">
+        <p class="tag">SEC-08 // LINKS</p>
+        <h2 id="links-heading" class="mt-3 text-xl sm:text-2xl">Links</h2>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a
+            class="btn btn--primary"
+            href="https://github.com/vipul-pawar/sonicRadar"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub Repository <span aria-hidden="true">↗</span></a
+          >
+          <span class="btn btn--outline" aria-disabled="true">Live demo — not applicable</span>
+        </div>
+      </section>
+
+      <!-- ============ PAGER ============ -->
+      <nav class="section-tight" aria-label="Previous and next pages">
+        <div class="pager">
+          <a class="pager-link" href="plc-pneumatic-control.html" rel="prev">
+            <span class="pager-dir"><span aria-hidden="true">←</span> Previous</span>
+            <span class="pager-title">PLC-Based Control of Pneumatic Cylinders</span>
+          </a>
+          <a class="pager-link pager-link--next" href="pictale.html" rel="next">
+            <span class="pager-dir">Next <span aria-hidden="true">→</span></span>
+            <span class="pager-title">PicTale</span>
+          </a>
+        </div>
+      </nav>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/layout.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+  </body>
+</html>

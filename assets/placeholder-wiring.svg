@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder artwork: wiring diagram showing a PLC driving two cylinders through valve terminals">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2a45" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.45"/>
+
+  <rect x="120" y="230" width="300" height="330" rx="12" fill="none" stroke="#fbbf24" stroke-width="4"/>
+  <rect x="136" y="246" width="268" height="298" rx="8" fill="#fbbf24" opacity="0.05"/>
+  <text x="270" y="380" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="38" font-weight="700" fill="#fbbf24">PLC</text>
+  <text x="270" y="422" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="20" fill="#94a3b8" letter-spacing="3">CONTROLLER</text>
+
+  <g fill="#04070d" stroke="#22c55e" stroke-width="3">
+    <circle cx="420" cy="280" r="9"/>
+    <circle cx="420" cy="340" r="9"/>
+    <circle cx="420" cy="400" r="9"/>
+    <circle cx="420" cy="460" r="9"/>
+    <circle cx="420" cy="520" r="9"/>
+  </g>
+
+  <g stroke="#fbbf24" stroke-width="3" fill="none" opacity="0.85" stroke-linejoin="round">
+    <path d="M429 280H620V300"/>
+    <path d="M429 340H700V300"/>
+    <path d="M429 400H620V520"/>
+    <path d="M429 460H700V520"/>
+    <path d="M429 520H520"/>
+  </g>
+
+  <g>
+    <rect x="600" y="220" width="120" height="80" rx="8" fill="none" stroke="#3a4f74" stroke-width="3"/>
+    <text x="660" y="267" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#94a3b8">VALVE</text>
+    <rect x="680" y="220" width="120" height="80" rx="8" fill="none" stroke="#3a4f74" stroke-width="3"/>
+    <text x="740" y="267" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#94a3b8">VALVE</text>
+  </g>
+
+  <g fill="none" stroke="#22c55e" stroke-width="4">
+    <rect x="860" y="270" width="180" height="60" rx="8"/>
+    <path d="M1040 300h90"/>
+    <rect x="860" y="490" width="180" height="60" rx="8"/>
+    <path d="M1040 520h90"/>
+  </g>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#4ade80">
+    <text x="950" y="262" text-anchor="middle">CYL 1</text>
+    <text x="950" y="482" text-anchor="middle">CYL 2</text>
+  </g>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" fill="#64748b">
+    <text x="440" y="268">O0.0</text>
+    <text x="440" y="328">O0.1</text>
+    <text x="440" y="388">I0.0</text>
+    <text x="440" y="448">I0.1</text>
+    <text x="440" y="508">24V</text>
+  </g>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.5">
+    <path d="M60 120V60h60M1140 120V60h-60M60 680v60h60M1140 680v60h-60"/>
+  </g>
+
+  <text x="440" y="730" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#fbbf24" letter-spacing="4">WIRING DIAGRAM</text>
+  <text x="440" y="766" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#64748b" letter-spacing="3">PLACEHOLDER · REPLACE WITH PROJECT ASSET</text>
+  <rect x="1.5" y="1.5" width="1197" height="797" fill="none" stroke="#26385a" stroke-width="3"/>
+</svg>

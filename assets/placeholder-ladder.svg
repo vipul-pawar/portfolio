@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder artwork: PLC ladder logic diagram with four rungs">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2a45" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.45"/>
+
+  <g stroke="#3a4f74" stroke-width="4" stroke-linecap="square">
+    <path d="M160 140v520M1040 140v520"/>
+  </g>
+  <g stroke="#fbbf24" stroke-width="3" opacity="0.8">
+    <path d="M160 240H1040M160 370H1040M160 500H1040M160 630H560"/>
+  </g>
+
+  <g stroke="#fbbf24" stroke-width="4" opacity="0.9">
+    <path d="M330 216v48M390 216v48M300 216h30M390 216h40"/>
+    <path d="M330 346v48M390 346v48M300 346h30M390 346h40"/>
+    <path d="M330 476v48M390 476v48M300 476h30M390 476h40"/>
+  </g>
+
+  <g stroke="#22c55e" stroke-width="4">
+    <path d="M790 220q22 20 0 40q-22 -20 0 -40z" transform="translate(0,0)"/>
+  </g>
+
+  <g fill="none" stroke="#22c55e" stroke-width="4">
+    <path d="M860 220c18 0 18 20 0 20"/>
+    <path d="M800 220c-18 0 -18 20 0 20"/>
+    <path d="M800 240h60"/>
+    <path d="M860 350c18 0 18 20 0 20"/>
+    <path d="M800 350c-18 0 -18 20 0 20"/>
+    <path d="M800 370h60"/>
+  </g>
+
+  <g fill="none" stroke="#3a4f74" stroke-width="4">
+    <path d="M860 480c18 0 18 20 0 20"/>
+    <path d="M800 480c-18 0 -18 20 0 20"/>
+    <path d="M800 500h60"/>
+  </g>
+
+  <g stroke="#3a4f74" stroke-width="4" stroke-dasharray="10 10">
+    <path d="M620 500h180M620 630h180"/>
+  </g>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="20" fill="#94a3b8">
+    <text x="300" y="200">START</text>
+    <text x="300" y="330">CYCLE DONE</text>
+    <text x="300" y="460">TIMER.DN</text>
+    <text x="660" y="196" fill="#fbbf24">RUNG 1</text>
+    <text x="660" y="326" fill="#fbbf24">RUNG 2</text>
+    <text x="660" y="456" fill="#fbbf24">RUNG 3</text>
+    <text x="660" y="486" fill="#64748b" font-size="17">OFF DELAY 5 s</text>
+    <text x="660" y="616" fill="#fbbf24">RUNG 4</text>
+  </g>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="20" fill="#4ade80">
+    <text x="800" y="200">SOL_A</text>
+    <text x="800" y="330">SOL_B</text>
+  </g>
+  <text x="800" y="460" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="20" fill="#64748b">SOL_C</text>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.5">
+    <path d="M60 120V60h60M1140 120V60h-60M60 680v60h60M1140 680v60h-60"/>
+  </g>
+
+  <text x="440" y="730" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#fbbf24" letter-spacing="4">LADDER DIAGRAM</text>
+  <text x="440" y="766" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#64748b" letter-spacing="3">PLACEHOLDER · REPLACE WITH PROJECT ASSET</text>
+  <rect x="1.5" y="1.5" width="1197" height="797" fill="none" stroke="#26385a" stroke-width="3"/>
+</svg>

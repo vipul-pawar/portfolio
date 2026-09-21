@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder artwork: layered system architecture block diagram">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2a45" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.45"/>
+
+  <g>
+    <rect x="420" y="150" width="440" height="86" rx="10" fill="none" stroke="#fbbf24" stroke-width="3.5"/>
+    <rect x="436" y="166" width="408" height="54" rx="6" fill="#fbbf24" opacity="0.06"/>
+    <rect x="420" y="292" width="440" height="86" rx="10" fill="none" stroke="#fbbf24" stroke-width="3.5"/>
+    <rect x="420" y="434" width="440" height="86" rx="10" fill="none" stroke="#22c55e" stroke-width="3.5"/>
+    <rect x="436" y="450" width="408" height="54" rx="6" fill="#22c55e" opacity="0.06"/>
+    <rect x="420" y="576" width="440" height="86" rx="10" fill="none" stroke="#3a4f74" stroke-width="3.5"/>
+  </g>
+
+  <g stroke="#94a3b8" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M640 236v56M640 378v56M640 520v56"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M640 300l-10-16h20z"/>
+    <path d="M640 442l-10-16h20z"/>
+    <path d="M640 584l-10-16h20z"/>
+  </g>
+
+  <g fill="none" stroke="#4ade80" stroke-width="3" stroke-dasharray="9 9">
+    <path d="M420 620H330V190H420"/>
+  </g>
+  <path d="M420 190l16 10-16 10z" fill="#4ade80"/>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="24" fill="#e2e8f0" text-anchor="middle">
+    <text x="640" y="201">LAYER / BLOCK A</text>
+    <text x="640" y="343">LAYER / BLOCK B</text>
+    <text x="640" y="485">LAYER / BLOCK C</text>
+    <text x="640" y="627">LAYER / BLOCK D</text>
+  </g>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#64748b" text-anchor="middle">
+    <text x="640" y="223">TODO: ADD DETAIL FROM README</text>
+    <text x="640" y="365">TODO: ADD DETAIL FROM README</text>
+    <text x="640" y="507">TODO: ADD DETAIL FROM README</text>
+    <text x="640" y="649">TODO: ADD DETAIL FROM README</text>
+  </g>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#94a3b8">
+    <text x="880" y="343">DATA FLOW</text>
+    <text x="880" y="485">CONTROL FLOW</text>
+  </g>
+  <text x="140" y="404" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#4ade80">FEEDBACK</text>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.5">
+    <path d="M60 120V60h60M1140 120V60h-60M60 680v60h60M1140 680v60h-60"/>
+  </g>
+
+  <text x="420" y="730" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#fbbf24" letter-spacing="4">BLOCK DIAGRAM</text>
+  <text x="420" y="766" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#64748b" letter-spacing="3">PLACEHOLDER · REPLACE WITH PROJECT ASSET</text>
+  <rect x="1.5" y="1.5" width="1197" height="797" fill="none" stroke="#26385a" stroke-width="3"/>
+</svg>

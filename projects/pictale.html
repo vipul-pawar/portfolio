@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PicTale — Django Media Gallery — Vipul Pawar</title>
+    <meta
+      name="description"
+      content="Project detail: PicTale, a Django web app with full CRUD for photos and videos, user authentication, an admin dashboard and a responsive dark-mode interface."
+    />
+    <meta name="author" content="Vipul Pawar" />
+    <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04070d" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PicTale — Django Media Gallery — Vipul Pawar" />
+    <meta
+      property="og:description"
+      content="Full CRUD media gallery with user authentication, admin dashboard and dark-mode UI."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/output.css" />
+    <!-- Applies the saved (or system) theme before first paint — no flash. -->
+    <script>
+      (function () {
+        var isDark = false;
+        try {
+          var saved = window.localStorage.getItem('vp-theme');
+          isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body data-root="../" data-page="projects/pictale.html">
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============ 1. HEADER + DATASHEET ============ -->
+      <section class="section-tight pt-10" aria-labelledby="project-heading">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a class="crumb" href="../index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <a class="crumb" href="../projects.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-700 dark:text-slate-300" aria-current="page">PicTale</span>
+        </nav>
+        <p class="mt-4">
+          <a class="crumb font-mono text-[11px] uppercase tracking-[0.14em]" href="../projects.html"
+            ><span aria-hidden="true">←</span> Back to all projects</a
+          >
+        </p>
+
+        <div class="mt-8 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+          <div class="reveal">
+            <p class="tag">PRJ-104 // PROJECT</p>
+            <h1 id="project-heading" class="mt-3 text-3xl leading-tight sm:text-4xl">PicTale</h1>
+            <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+              A Django web application for photos and videos: accounts, full CRUD over every media item, an admin
+              dashboard and a responsive dark-mode interface.
+            </p>
+
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--amber">Django</li>
+              <li class="chip chip--amber">Django ORM</li>
+              <li class="chip chip--amber">Tailwind CSS</li>
+              <li class="chip chip--green">Live</li>
+            </ul>
+
+            <div class="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Timeline <span class="ml-2 text-slate-700 dark:text-slate-300">Jun 2025</span>
+              </p>
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Context <span class="ml-2 text-slate-700 dark:text-slate-300">Personal project — deployed</span>
+              </p>
+            </div>
+          </div>
+
+          <aside class="panel panel--glow reveal" aria-labelledby="datasheet-heading">
+            <div class="panel-head">
+              <span class="tag" id="datasheet-heading">DS-104 // DATASHEET</span>
+              <span class="tag-mini ml-auto">REV A</span>
+            </div>
+            <dl class="panel-body">
+              <div class="ds-row">
+                <dt class="ds-key">Tag</dt>
+                <dd class="ds-val">WEB-104</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Service</dt>
+                <dd class="ds-val">Photo &amp; video gallery — full CRUD, user accounts, admin dashboard</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Hardware / Stack</dt>
+                <dd class="ds-val">Django · Django ORM · Tailwind CSS</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Outcome</dt>
+                <dd class="ds-val">Deployed at picTale.in with authentication, media management and a responsive dark-mode UI.</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ 2. OVERVIEW ============ -->
+      <section class="section-tight" aria-labelledby="overview-heading">
+        <p class="tag">SEC-01 // OVERVIEW</p>
+        <h2 id="overview-heading" class="mt-3 text-xl sm:text-2xl">Overview</h2>
+        <div class="panel mt-5">
+          <div class="panel-body space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+            <p>
+              PicTale is a Django web application for managing a personal media library. Accounts are handled by
+              Django's authentication system, and every photo or video in the library can be uploaded, edited and
+              deleted — full CRUD, not just an upload form.
+            </p>
+            <p>
+              The interface is built with Tailwind CSS and ships with a responsive dark-mode UI, and the Django admin
+              dashboard provides a management view over the content.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. PROBLEM & SOLUTION ============ -->
+      <section class="section-tight" aria-labelledby="problem-heading">
+        <p class="tag">SEC-02 // PROBLEM &amp; SOLUTION</p>
+        <h2 id="problem-heading" class="mt-3 text-xl sm:text-2xl">Problem and solution</h2>
+        <div class="mt-5 grid gap-5 md:grid-cols-2">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="led led--amber" aria-hidden="true"></span>
+              <span class="tag">ISSUE</span>
+            </div>
+            <div class="panel-body">
+              <ul class="space-y-3">
+                <li class="bullet-item">
+                  <span>Media collections sprawl across folders and devices with no single place to manage them.</span>
+                </li>
+                <li class="bullet-item">
+                  <span>Upload-only galleries are frustrating: there is no way to correct or remove something once it is in.</span>
+                </li>
+                <li class="bullet-item">
+                  <span>A private library needs real accounts, not a link that anyone who has it can open.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="led led--green" aria-hidden="true"></span>
+              <span class="tag">APPROACH</span>
+            </div>
+            <div class="panel-body space-y-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>
+                Model the library properly in the Django ORM, tie every media item to its owner, and expose the full
+                set of create, read, update and delete operations through authenticated views.
+              </p>
+              <p>
+                Use Django's admin dashboard for a management view, and Tailwind CSS to keep the interface readable on
+                both light and dark screens.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. HOW IT WORKS ============ -->
+      <section class="section-tight" aria-labelledby="how-heading">
+        <p class="tag">SEC-03 // HOW IT WORKS</p>
+        <h2 id="how-heading" class="mt-3 text-xl sm:text-2xl">How it works</h2>
+        <ol class="mt-6">
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">01</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Sign in.</strong>
+              User authentication guards the library — nothing is visible or editable without an account.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">02</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Upload.</strong>
+              Photos and videos are submitted through the application's upload flow.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">03</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Store.</strong>
+              The Django ORM records the item and its metadata, keeping ownership tied to the signed-in user.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">04</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Browse.</strong>
+              The gallery renders the library in a responsive dark-mode interface.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">05</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Edit or delete.</strong>
+              Every item can be updated or removed later — the full CRUD cycle, not just upload.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">06</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Administer.</strong>
+              The admin dashboard gives a management view over users and media.</span
+            >
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ 5. KEY FEATURES ============ -->
+      <section class="section-tight" aria-labelledby="features-heading">
+        <p class="tag">SEC-04 // KEY FEATURES</p>
+        <h2 id="features-heading" class="mt-3 text-xl sm:text-2xl">Key features</h2>
+        <ul class="mt-5 space-y-3">
+          <li class="bullet-item"><span>Full CRUD for photos and videos — create, view, edit and delete.</span></li>
+          <li class="bullet-item"><span>User authentication so the library stays private to its accounts.</span></li>
+          <li class="bullet-item"><span>Media upload, edit and delete flows built on Django views and the ORM.</span></li>
+          <li class="bullet-item"><span>Admin dashboard for managing content and users.</span></li>
+          <li class="bullet-item"><span>Responsive, dark-mode UI styled with Tailwind CSS.</span></li>
+        </ul>
+      </section>
+
+      <!-- ============ 6. STACK ============ -->
+      <section class="section-tight" aria-labelledby="stack-heading">
+        <p class="tag">SEC-05 // HARDWARE &amp; SOFTWARE STACK</p>
+        <h2 id="stack-heading" class="mt-3 text-xl sm:text-2xl">Hardware / software stack</h2>
+        <ul class="mt-5 flex flex-wrap gap-2">
+          <li class="chip">Django</li>
+          <li class="chip">Django ORM</li>
+          <li class="chip">Tailwind CSS</li>
+          <li class="chip">Python</li>
+          <li class="chip">User authentication</li>
+          <li class="chip">CRUD views</li>
+          <li class="chip">Responsive UI</li>
+          <li class="chip">Dark mode</li>
+        </ul>
+        <p class="todo">
+          <span aria-hidden="true">▸</span>
+          <span>TODO: add detail from README — database engine, media storage and hosting setup are not recorded in the
+          source notes yet.</span>
+        </p>
+      </section>
+
+      <!-- ============ 7. GALLERY ============ -->
+      <section class="section-tight" aria-labelledby="gallery-heading">
+        <p class="tag">SEC-06 // GALLERY</p>
+        <h2 id="gallery-heading" class="mt-3 text-xl sm:text-2xl">Gallery</h2>
+        <p class="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-400">Click any panel to enlarge it.</p>
+        <div class="mt-5 grid gap-5 sm:grid-cols-2">
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/pictale/Home Page.jfif"
+              data-caption="IMG-01 — Media gallery, dark mode (placeholder)"
+            >
+              <img
+                src="projectsImages/pictale/Home Page.jfif"
+                alt="Placeholder: PicTale media gallery interface in dark mode"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap">
+              <span class="tag-mini">IMG-01</span> Media Gallery — dark-mode UI
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/pictale/edit.jfif"
+              data-caption="IMG-02 — Upload / edit / delete flow (placeholder)"
+            >
+              <img
+                src="projectsImages/pictale/edit.jfif"
+                alt="Placeholder: flow diagram from upload through edit to delete"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap">
+              <span class="tag-mini">IMG-02</span> Upload / Edit / Delete Flow
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="../assets/placeholder-plot.svg"
+              data-caption="IMG-03 — Admin dashboard (placeholder)"
+            >
+              <img
+                src="projectsImages/pictale/SignUp Page.jfif"
+                alt="Placeholder: admin dashboard with content and activity overview"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap">
+              <span class="tag-mini">IMG-03</span> Signup Page — content overview
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 8. LEARNINGS ============ -->
+      <section class="section-tight" aria-labelledby="learned-heading">
+        <p class="tag">SEC-07 // WHAT I LEARNED</p>
+        <h2 id="learned-heading" class="mt-3 text-xl sm:text-2xl">What I learned</h2>
+        <ul class="mt-5 space-y-3">
+          <li class="bullet-item">
+            <span>Model first: once the ORM models and relationships were right, the CRUD views became almost mechanical.</span>
+          </li>
+          <li class="bullet-item">
+            <span>Authentication is a design decision, not an add-on — ownership has to be enforced in the views, not hidden in the interface.</span>
+          </li>
+          <li class="bullet-item">
+            <span>Tailwind's dark-mode variants make a genuinely themeable interface possible without maintaining two separate stylesheets.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ 9. LINKS ============ -->
+      <section class="section-tight" aria-labelledby="links-heading">
+        <p class="tag">SEC-08 // LINKS</p>
+        <h2 id="links-heading" class="mt-3 text-xl sm:text-2xl">Links</h2>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a class="btn btn--primary" href="https://pictale.onrender.com/" target="_blank" rel="noopener noreferrer"
+            >Live Site <span aria-hidden="true">↗</span></a
+          >
+          <a
+            class="btn btn--outline"
+            href="https://github.com/vipul-pawar/picTale"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub Repository <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+
+      <!-- ============ PAGER ============ -->
+      <nav class="section-tight" aria-label="Previous and next pages">
+        <div class="pager">
+          <a class="pager-link" href="sonicradar.html" rel="prev">
+            <span class="pager-dir"><span aria-hidden="true">←</span> Previous</span>
+            <span class="pager-title">sonicRadar</span>
+          </a>
+          <a class="pager-link pager-link--next" href="emi-calculator.html" rel="next">
+            <span class="pager-dir">Next <span aria-hidden="true">→</span></span>
+            <span class="pager-title">EMI Calculator</span>
+          </a>
+        </div>
+      </nav>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/layout.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EMI Calculator — Django App — Vipul Pawar</title>
+    <meta
+      name="description"
+      content="Project detail: a Django EMI calculator that computes the equated monthly instalment from principal, interest rate and tenure, styled with Tailwind CSS and Bootstrap."
+    />
+    <meta name="author" content="Vipul Pawar" />
+    <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#04070d" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="EMI Calculator — Django App — Vipul Pawar" />
+    <meta
+      property="og:description"
+      content="A small Django app that turns principal, interest rate and tenure into a monthly instalment."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/output.css" />
+    <!-- Applies the saved (or system) theme before first paint — no flash. -->
+    <script>
+      (function () {
+        var isDark = false;
+        try {
+          var saved = window.localStorage.getItem('vp-theme');
+          isDark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body data-root="../" data-page="projects/emi-calculator.html">
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============ 1. HEADER + DATASHEET ============ -->
+      <section class="section-tight pt-10" aria-labelledby="project-heading">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a class="crumb" href="../index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <a class="crumb" href="../projects.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-700 dark:text-slate-300" aria-current="page">EMI Calculator</span>
+        </nav>
+        <p class="mt-4">
+          <a class="crumb font-mono text-[11px] uppercase tracking-[0.14em]" href="../projects.html"
+            ><span aria-hidden="true">←</span> Back to all projects</a
+          >
+        </p>
+
+        <div class="mt-8 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+          <div class="reveal">
+            <p class="tag">PRJ-105 // PROJECT</p>
+            <h1 id="project-heading" class="mt-3 text-3xl leading-tight sm:text-4xl">EMI Calculator</h1>
+            <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+              A focused Django app that turns three inputs — principal, interest rate and tenure — into the equated
+              monthly instalment for a loan.
+            </p>
+
+            <ul class="mt-5 flex flex-wrap gap-2">
+              <li class="chip chip--amber">Django</li>
+              <li class="chip chip--amber">Tailwind CSS</li>
+              <li class="chip chip--amber">Bootstrap</li>
+              <li class="chip chip--green">Python</li>
+            </ul>
+
+            <div class="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Timeline <span class="ml-2 text-slate-700 dark:text-slate-300">Jan 2025</span>
+              </p>
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">
+                Context <span class="ml-2 text-slate-700 dark:text-slate-300">Personal project</span>
+              </p>
+            </div>
+          </div>
+
+          <aside class="panel panel--glow reveal" aria-labelledby="datasheet-heading">
+            <div class="panel-head">
+              <span class="tag" id="datasheet-heading">DS-105 // DATASHEET</span>
+              <span class="tag-mini ml-auto">REV A</span>
+            </div>
+            <dl class="panel-body">
+              <div class="ds-row">
+                <dt class="ds-key">Tag</dt>
+                <dd class="ds-val">FIN-105</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Service</dt>
+                <dd class="ds-val">Loan EMI computation from principal, interest rate and tenure</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Hardware / Stack</dt>
+                <dd class="ds-val">Django · Tailwind CSS · Bootstrap</dd>
+              </div>
+              <div class="ds-row">
+                <dt class="ds-key">Outcome</dt>
+                <dd class="ds-val">Instant monthly instalment for any set of inputs entered into the form.</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ 2. OVERVIEW ============ -->
+      <section class="section-tight" aria-labelledby="overview-heading">
+        <p class="tag">SEC-01 // OVERVIEW</p>
+        <h2 id="overview-heading" class="mt-3 text-xl sm:text-2xl">Overview</h2>
+        <div class="panel mt-5">
+          <div class="panel-body space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+            <p>
+              The EMI calculator is a deliberately small Django application: the user enters the loan principal, the
+              interest rate and the tenure, and the app returns the equated monthly instalment.
+            </p>
+            <p>
+              It was built as a compact exercise in the request → view → template cycle, with the interface styled
+              using Tailwind CSS and Bootstrap.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. PROBLEM & SOLUTION ============ -->
+      <section class="section-tight" aria-labelledby="problem-heading">
+        <p class="tag">SEC-02 // PROBLEM &amp; SOLUTION</p>
+        <h2 id="problem-heading" class="mt-3 text-xl sm:text-2xl">Problem and solution</h2>
+        <div class="mt-5 grid gap-5 md:grid-cols-2">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="led led--amber" aria-hidden="true"></span>
+              <span class="tag">ISSUE</span>
+            </div>
+            <div class="panel-body">
+              <ul class="space-y-3">
+                <li class="bullet-item">
+                  <span>Working out a monthly instalment by hand is slow and easy to get wrong.</span>
+                </li>
+                <li class="bullet-item">
+                  <span>Spreadsheet formulas are not available to everyone who needs a quick answer.</span>
+                </li>
+                <li class="bullet-item">
+                  <span>Many online calculators bury three inputs under advertising and extra features.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="led led--green" aria-hidden="true"></span>
+              <span class="tag">APPROACH</span>
+            </div>
+            <div class="panel-body space-y-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>
+                Keep it to exactly three inputs and one output, and do the arithmetic on the server in a Django view so
+                the result is consistent regardless of the browser.
+              </p>
+              <p>
+                Serve a clean, responsive form page so the calculator is usable on a phone as well as a desktop.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. HOW IT WORKS ============ -->
+      <section class="section-tight" aria-labelledby="how-heading">
+        <p class="tag">SEC-03 // HOW IT WORKS</p>
+        <h2 id="how-heading" class="mt-3 text-xl sm:text-2xl">How it works</h2>
+        <ol class="mt-6">
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">01</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Enter the inputs.</strong>
+              Principal amount, interest rate and loan tenure are submitted through a form.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">02</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Validate.</strong>
+              The Django view checks the submitted values before doing anything with them.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">03</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Compute.</strong>
+              The view calculates the equated monthly instalment for that principal, rate and tenure.</span
+            >
+          </li>
+          <li class="step-item">
+            <span class="step-num" aria-hidden="true">04</span>
+            <span class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400"
+              ><strong class="font-medium text-slate-800 dark:text-slate-200">Render.</strong>
+              The result is passed back into the template and shown with the original inputs, so the calculation can be
+              compared immediately.</span
+            >
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ 5. KEY FEATURES ============ -->
+      <section class="section-tight" aria-labelledby="features-heading">
+        <p class="tag">SEC-04 // KEY FEATURES</p>
+        <h2 id="features-heading" class="mt-3 text-xl sm:text-2xl">Key features</h2>
+        <ul class="mt-5 space-y-3">
+          <li class="bullet-item"><span>Three inputs, one output — principal, interest rate, tenure → monthly EMI.</span></li>
+          <li class="bullet-item"><span>Server-side computation in a Django view, so the maths does not depend on the browser.</span></li>
+          <li class="bullet-item"><span>Responsive form page that works on small screens as well as desktop.</span></li>
+          <li class="bullet-item"><span>Interface styled with Tailwind CSS together with Bootstrap components.</span></li>
+        </ul>
+      </section>
+
+      <!-- ============ 6. STACK ============ -->
+      <section class="section-tight" aria-labelledby="stack-heading">
+        <p class="tag">SEC-05 // HARDWARE &amp; SOFTWARE STACK</p>
+        <h2 id="stack-heading" class="mt-3 text-xl sm:text-2xl">Hardware / software stack</h2>
+        <ul class="mt-5 flex flex-wrap gap-2">
+          <li class="chip">Django</li>
+          <li class="chip">Python</li>
+          <li class="chip">Tailwind CSS</li>
+          <li class="chip">Bootstrap</li>
+          <li class="chip">HTML forms</li>
+          <li class="chip">Template rendering</li>
+        </ul>
+      </section>
+
+      <!-- ============ 7. GALLERY ============ -->
+      <section class="section-tight" aria-labelledby="gallery-heading">
+        <p class="tag">SEC-06 // GALLERY</p>
+        <h2 id="gallery-heading" class="mt-3 text-xl sm:text-2xl">Gallery</h2>
+        <p class="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-400">Click any panel to enlarge it.</p>
+        <div class="mt-5 grid gap-5 sm:grid-cols-2">
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/emi/input- view.jpg"
+              data-caption="IMG-01 — Input form (placeholder)"
+            >
+              <img
+                src="projectsImages/emi/input- view.jpg"
+                alt="Placeholder: EMI calculator input form with principal, rate and tenure"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-01</span> Input Form</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/emi/result-view.jpg"
+              data-caption="IMG-02 — Result view (placeholder)"
+            >
+              <img
+                src="projectsImages/emi/result-view.jpg"
+                alt="Placeholder: result view showing the computed monthly instalment"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-02</span> Result View</figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <button
+              type="button"
+              class="gallery-btn"
+              data-lightbox
+              data-full="projectsImages/emi/System Architecture.png"
+              data-caption="IMG-03 — Django app structure (placeholder)"
+            >
+              <img
+                src="projectsImages/emi/System Architecture.png"
+                alt="Placeholder: Django app structure from form to view to template"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="gallery-cap"><span class="tag-mini">IMG-03</span> Django App Structure</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 8. LEARNINGS ============ -->
+      <section class="section-tight" aria-labelledby="learned-heading">
+        <p class="tag">SEC-07 // WHAT I LEARNED</p>
+        <h2 id="learned-heading" class="mt-3 text-xl sm:text-2xl">What I learned</h2>
+        <ul class="mt-5 space-y-3">
+          <li class="bullet-item">
+            <span>Most of the work in a calculator app is form handling: validating input and re-rendering it with the result.</span>
+          </li>
+          <li class="bullet-item">
+            <span>Combining Tailwind and Bootstrap is possible, but you have to decide deliberately which framework owns spacing and typography.</span>
+          </li>
+          <li class="bullet-item">
+            <span>A single-purpose app is a good way to practise the request → view → template cycle without extra moving parts.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ 9. LINKS ============ -->
+      <section class="section-tight" aria-labelledby="links-heading">
+        <p class="tag">SEC-08 // LINKS</p>
+        <h2 id="links-heading" class="mt-3 text-xl sm:text-2xl">Links</h2>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a
+            class="btn btn--primary"
+            href="https://github.com/vipul-pawar/EMI"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub Repository <span aria-hidden="true">↗</span></a
+          >
+          <span class="btn btn--outline" aria-disabled="true">Live demo — not available</span>
+        </div>
+      </section>
+
+      <!-- ============ PAGER ============ -->
+      <nav class="section-tight" aria-label="Previous and next pages">
+        <div class="pager">
+          <a class="pager-link" href="pictale.html" rel="prev">
+            <span class="pager-dir"><span aria-hidden="true">←</span> Previous</span>
+            <span class="pager-title">PicTale</span>
+          </a>
+          <a class="pager-link pager-link--next" href="../experience/reliance-internship.html" rel="next">
+            <span class="pager-dir">Next <span aria-hidden="true">→</span></span>
+            <span class="pager-title">Reliance Industries — Internship</span>
+          </a>
+        </div>
+      </nav>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/layout.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+  </body>
+</html>

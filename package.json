@@ -1,0 +1,20 @@
+{
+  "name": "vipul-pawar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static multi-page portfolio for Vipul Pawar - Instrumentation, Control & Automation Engineering. Plain HTML + Tailwind CSS (CLI build) + small vanilla JS.",
+  "scripts": {
+    "dev": "tailwindcss -i ./css/input.css -o ./css/output.css --watch",
+    "build": "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
+    "serve": "npx --yes serve . -l 4173"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
+}

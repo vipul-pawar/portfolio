@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder artwork: dashboard user interface with cards, a bar chart and a table">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070c16"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2a45" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.45"/>
+
+  <rect x="80" y="70" width="1040" height="560" rx="14" fill="none" stroke="#3a4f74" stroke-width="3.5"/>
+  <path d="M80 130H1120" stroke="#3a4f74" stroke-width="3"/>
+  <g fill="#3a4f74">
+    <circle cx="112" cy="100" r="7"/>
+    <circle cx="140" cy="100" r="7"/>
+    <circle cx="168" cy="100" r="7"/>
+  </g>
+  <rect x="210" y="86" width="420" height="28" rx="14" fill="none" stroke="#26385a" stroke-width="2.5"/>
+  <text x="230" y="106" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#64748b">/dashboard</text>
+  <circle cx="1070" cy="100" r="8" fill="#22c55e"/>
+
+  <path d="M300 130V630" stroke="#26385a" stroke-width="3"/>
+  <g fill="none" stroke="#26385a" stroke-width="2.5">
+    <rect x="110" y="170" width="160" height="30" rx="6" fill="#fbbf24" opacity="0.12" stroke="#fbbf24"/>
+    <rect x="110" y="222" width="160" height="30" rx="6"/>
+    <rect x="110" y="274" width="160" height="30" rx="6"/>
+    <rect x="110" y="326" width="160" height="30" rx="6"/>
+    <rect x="110" y="378" width="160" height="30" rx="6"/>
+  </g>
+
+  <g fill="none" stroke="#3a4f74" stroke-width="2.5">
+    <rect x="330" y="160" width="220" height="90" rx="10"/>
+    <rect x="570" y="160" width="220" height="90" rx="10"/>
+    <rect x="810" y="160" width="220" height="90" rx="10"/>
+  </g>
+  <g>
+    <rect x="350" y="182" width="70" height="10" rx="5" fill="#64748b"/>
+    <rect x="350" y="206" width="120" height="20" rx="6" fill="#22c55e" opacity="0.5"/>
+    <rect x="590" y="182" width="70" height="10" rx="5" fill="#64748b"/>
+    <rect x="590" y="206" width="96" height="20" rx="6" fill="#fbbf24" opacity="0.5"/>
+    <rect x="830" y="182" width="70" height="10" rx="5" fill="#64748b"/>
+    <rect x="830" y="206" width="140" height="20" rx="6" fill="#22c55e" opacity="0.35"/>
+  </g>
+
+  <g fill="#22c55e" opacity="0.75">
+    <rect x="350" y="480" width="46" height="90" rx="6"/>
+    <rect x="416" y="430" width="46" height="140" rx="6"/>
+    <rect x="482" y="500" width="46" height="70" rx="6"/>
+    <rect x="548" y="390" width="46" height="180" rx="6"/>
+    <rect x="614" y="460" width="46" height="110" rx="6"/>
+    <rect x="680" y="440" width="46" height="130" rx="6"/>
+  </g>
+  <path d="M330 570H800" stroke="#26385a" stroke-width="3"/>
+
+  <g stroke="#26385a" stroke-width="2.5">
+    <path d="M840 300H1100M840 350H1100M840 400H1100M840 450H1100M840 500H1100"/>
+  </g>
+  <g fill="#64748b" opacity="0.8">
+    <rect x="840" y="280" width="90" height="10" rx="5"/>
+    <rect x="840" y="330" width="140" height="10" rx="5"/>
+    <rect x="840" y="380" width="70" height="10" rx="5"/>
+    <rect x="840" y="430" width="150" height="10" rx="5"/>
+    <rect x="840" y="480" width="110" height="10" rx="5"/>
+  </g>
+  <g fill="#fbbf24" opacity="0.7">
+    <rect x="1040" y="278" width="60" height="14" rx="7"/>
+    <rect x="1010" y="328" width="90" height="14" rx="7"/>
+    <rect x="1060" y="378" width="40" height="14" rx="7"/>
+    <rect x="1000" y="428" width="100" height="14" rx="7"/>
+    <rect x="1030" y="478" width="70" height="14" rx="7"/>
+  </g>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.5">
+    <path d="M60 120V60h60M1140 120V60h-60M60 680v60h60M1140 680v60h-60"/>
+  </g>
+
+  <text x="80" y="730" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#fbbf24" letter-spacing="4">UI / DASHBOARD</text>
+  <text x="80" y="766" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" fill="#64748b" letter-spacing="3">PLACEHOLDER · REPLACE WITH PROJECT ASSET</text>
+  <rect x="1.5" y="1.5" width="1197" height="797" fill="none" stroke="#26385a" stroke-width="3"/>
+</svg>
