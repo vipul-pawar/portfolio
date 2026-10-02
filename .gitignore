@@ -13,3 +13,6 @@ desktop.ini
 
 # Note: css/output.css IS committed on purpose so the site works on any
 # static host (GitHub Pages / Netlify) and when opened straight from disk.
+.vercel
+.env*
+.vercel-tmp/
